@@ -23,4 +23,9 @@ class PostController extends AppController
     {
         return $this->render('test');
     }
+
+    public function actionHello ()
+    {
+        return $this->render('hello');
+    }
 }
