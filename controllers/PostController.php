@@ -7,16 +7,23 @@
  */
 
 namespace app\controllers;
+use app\models\Post;
+use yii\data\Pagination;
 
 
 class PostController extends AppController
 {
     public function actionIndex($name = "Vasya")
     {
-        $hello = 'Hello!';
-        $hi = "Hi!";
-        //return $this->render('index', ['var' => $hello, 'hi' => "Hi!"]); //index - название вида, который надо обработать
-        return $this->render('index', compact('hello', 'hi', 'name')); //альтернативный способ передачи переменных в вид
+        //$posts = Post::find()->select('id, title, excerpt')->orderBy('id DESC')->all();
+
+        $query = Post::find()->select('id, title, excerpt')->orderBy('id DESC');
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]);
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        //$this->debug($posts); //для метода в основном контроллере
+        //debug($posts);  //для функции в файле, чт ов корневом каталоге и подключен в index.php
+        return $this->render('index', compact('posts', 'pages'));
     }
 
     public function actionTest ()
@@ -26,6 +33,9 @@ class PostController extends AppController
 
     public function actionHello ()
     {
-        return $this->render('hello');
+        $hello = 'Hello!';
+        $hi = "Hi!";
+        //return $this->render('hello', ['var' => $hello, 'hi' => "Hi!"]); //index - название вида, который надо обработать
+        return $this->render('hello', compact('hello', 'hi', 'name')); //альтернативный способ передачи переменных в вид
     }
 }

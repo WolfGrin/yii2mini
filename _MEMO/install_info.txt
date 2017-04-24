@@ -36,3 +36,48 @@ composer create-project yiisoft/yii2-app-basic ./ 2.0.11
 ###########################################
 
 4. в строке 'cookieValidationKey' => '', вписываем любые символы, пример: "asd23dasdkjlkajsldkj"
+
+
+------------------------------------------------------------------------------------------------
+
+Для использования существующего рпоекта на гитхабе:
+
+1. Устанавливаем Yii2 через композер как описанно выше
+2. в папке с созданым проектом открываем консоль gitbash
+3. делаем: git init
+4. git add .
+5. git remote add github https://github.com/WolfGrin/yii2mini.git
+6. git commit -m "Чистая Yii2"
+7. git pull github master --allow-unrelated-histories
+8. git mergetool (или вручную проводим редактирование конфликнтых файлов, пропускаем пункты 9, )
+9. корректируем слияние, сохраняем, закрываем
+10. запускаем phpshtorm
+11. жмем Create New Project from Existing Files
+12. выбираем Web server is installed lacally, source files are localed under its document root. Жмем Next (или ваш вариант)
+13. выбираем папку с проектом, жмем Project Root -> Next
+14. указываем имя проекта и URL страницы сайта и жмем Next
+15. Web path for project root: /
+Finish
+
+В открывшемся phpstorme должно появится три уведомления (правый нижний угол)
+1. Composer: Composer configuration file found. Initialize Composer settings? Do not ask again.
+2.1 жмем Initialize
+2.2 выбираем действующий интерпретатор PHP
+2.3 Path to composer.phar: C:\OpenServer\modules\php\PHP-5.6\composer.phar
+2.4 Ok
+- 2 новых уведомления
+2.5 Composer: Composer packages were changed, so PHP include paths were updated. 
+2.5.1 Нажимаем (show balloon) -> PHP include paths
+2.5.2 выбираем CLI Interpreter PHP 5.6
+2.5.3 Ok
+2.6 Composer: Composer packages were changed, so excluded folders were updated. 
+2.6.1 жмем (show balloon) -> excluded folders
+2.6.2 Ok
+3 Detect PSR-0 namespace roots: Do you want to configure namespace roots? It can be done automatically or manually at Settings | Directories.
+3.1 жмем automatically
+3.2 Ok
+
+4. проверяем достигнут ли ожидаемый результат
+5. удаляем бекапы от программы для которую использовали для слияния
+6. делаем коммит
+Кодим свой проект дальше! :) 
