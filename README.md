@@ -1,3 +1,7 @@
+Этот проект реализован по обучающему видеоматериалу "Фреймворк YII2: теория и первая практика"<br>
+Автор уроков: Кудлай Андрей.<br>
+Ссылка на ютубе: https://www.youtube.com/playlist?list=PLD-piGJ3Dtl3-QBJvdHJz9sMv1VgU6ETB
+
 Yii 2 Basic Project Template
 ============================
 
